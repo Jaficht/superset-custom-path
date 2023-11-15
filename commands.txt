@@ -2,6 +2,9 @@ docker exec -it superset superset fab create-admin  --username admin --firstname
 docker exec -it superset superset db upgrade
 docker exec -it superset superset init
 
+docker compose build --force-rm
+docker compose up
+
 
 e5cc99d7-aa61-4a49-94d5-495ff80c29d9
 
