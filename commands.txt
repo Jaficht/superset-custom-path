@@ -1,0 +1,13 @@
+docker exec -it superset superset fab create-admin  --username admin --firstname Superset --lastname Admin --email gabeficht@gmail.com --password admin
+docker exec -it superset superset db upgrade
+docker exec -it superset superset init
+
+
+e5cc99d7-aa61-4a49-94d5-495ff80c29d9
+
+test_user
+Test1234$$
+
+
+{'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNzAwMDA0MTkyLCJqdGkiOiIzY2Y4YTdlYi1jZDU0LTQyNWItOWQ5Mi04ZmMzNWNlZTM3MGUiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoxLCJuYmYiOjE3MDAwMDQxOTIsImV4cCI6MTcwMDAwNTA5Mn0.0Ibq8WcIQ54KToKnGxJ2HzNjKdDQYnHi98d5cztrEN4',
+ 'refresh_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwMDAwNDE5MiwianRpIjoiYjc1NTgzODctNGEwMS00NjA3LTk4NzQtNDViMWVmY2UxNWRiIiwidHlwZSI6InJlZnJlc2giLCJzdWIiOjEsIm5iZiI6MTcwMDAwNDE5MiwiZXhwIjoxNzAyNTk2MTkyfQ.nuqlULExfiz6LAOaszh4wJa92aYmVgbWJ1M_dzdEi9g'}

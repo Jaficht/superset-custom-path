@@ -1,27 +1,28 @@
-# reference
-# - https://github.com/amancevice/docker-superset/blob/master/examples/postgres/docker-compose.yml
-
-version: '3'
+version: '2.3'
 services:
-  postgres:
-    image: postgres
+  db:
+    image: postgres:latest
     environment:
       POSTGRES_DB: superset
       POSTGRES_PASSWORD: superset
       POSTGRES_USER: superset
+    ports:
+      - "5432:5432"
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - ./postgres-data:/var/lib/postgresql/data
   superset:
-    build: ./superset
+    container_name: superset
+    build: .
     depends_on:
-      - postgres
+      - db
+    init: true
+    ports:
+      - "8088:8088"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    platform: linux/x86_64
     volumes:
-      - ./superset_config.py:/app/pythonpath/superset_config.py
-  nginx:
-    build: ./nginx
-    ports:  
-      - "8080:80"
-    depends_on:
-      - superset
-volumes:
-  postgres:
+      - ./superset/superset_config_docker.py:/app/pythonpath/superset_config.py
+    environment:
+      - SQLALCHEMY_DATABASE_URI=postgresql://superset:superset@db:5432/superset
+      - SUPERSET_FEATURE_EMBEDDED_SUPERSET=true
